@@ -11,9 +11,8 @@
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Terminology](#terminology)
-
     - [Shimmer Block](#shimmer-block)
-    - [Parts of an Shimmer Block](#parts-of-an-shimmer-block)
+    - [Parts of a Shimmer Block](#parts-of-a-shimmer-block)
   - [How Ledger Hardware Wallets Work](#how-ledger-hardware-wallets-work)
   - [Shimmer Specific Considerations for Ledger Hardware Wallets](#shimmer-specific-considerations-for-ledger-hardware-wallets)
     - [Shimmer User-Facing App Functions](#shimmer-user-facing-app-functions)
@@ -34,7 +33,6 @@
 ---
 
 ## Introduction
-
 
 Shimmer is an unique cryptocurrency with specific design considerations that must be taken into account. This document explains how the Ledger hardware wallet works and how to stay safe when using a Ledger to store Shimmer funds.
 
