@@ -1,4 +1,4 @@
-# IOTA Chrysalis/Stardust App for Ledger Nano S(+)/X Hardware Wallets
+# Shimmer Chrysalis/Stardust App for Ledger Nano S(+)/X Hardware Wallets
 
 ## Date Buffer States
 
@@ -25,7 +25,7 @@ A transfer consists of an Header and a Body.
 
 | Field Name	| Length (bytes)| Description									|
 |---------------|---------------|-----------------------------------------------|
-| CLA			| 1				| Instruction Class - 0x7b for IOTA Chrysalis	|
+| CLA			| 1				| Instruction Class - 0x7b for Shimmer Chrysalis	|
 | INS			| 1				| Instruction Code								|
 | P1-P2			| 1				| Instruction Parameters						|
 | LEN			| 1				| Length of data to be sent						|
@@ -77,7 +77,7 @@ Flags:
 |-----|----------|
 | 0 | Ledger locked |
 | 1 | Blindsigning enabled (only Stardust) |
-| 2 | App (0: IOTA, 1: Shimmer) |
+| 2 | App (0: Shimmer, 1: Shimmer) |
 
 **Errors**: \-
 
@@ -104,10 +104,10 @@ App-Mode:
 
 | Mode | Coin Type | Function |
 |-|-|-|
-| 0x00 | 0x107a | IOTA + Chrysalis (default, backwards compatible) |
-| 0x80 |    0x1 | IOTA + Chrysalis Testnet |
-| 0x01 | 0x107a | IOTA + Stardust |
-| 0x81 |    0x1 | IOTA + Stardust Testnet |
+| 0x02 | 0x107a | Shimmer Claiming (from IOTA addresses) |
+| 0x82 |    0x1 | Shimmer Claiming Testnet |
+| 0x03 | 0x107b | Shimmer + Stardust |
+| 0x83 |    0x1 | Shimmer + Stardust Testnet |
 
 **Response**: \-
 

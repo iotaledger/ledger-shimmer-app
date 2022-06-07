@@ -1,4 +1,4 @@
-# IOTA Chrysalis App for Ledger Hardware Wallets
+# Shimmer App for Ledger Hardware Wallets
 
 [![license](https://img.shields.io/github/license/IOTA-Ledger/blue-app-iota.svg)](https://github.com/IOTA-Ledger/blue-app-iota/blob/master/LICENSE)
 
@@ -7,32 +7,31 @@
 
 ## Table of contents
 
-- [IOTA Chrysalis App for Ledger Hardware Wallets](#iota-chrysalis-app-for-ledger-hardware-wallets)
+- [Shimmer App for Ledger Hardware Wallets](#shimmer-app-for-ledger-hardware-wallets)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Terminology](#terminology)
-    - [Address Reuse](#address-reuse)
-    - [IOTA Message](#iota-message)
-    - [Parts of an IOTA Message](#parts-of-an-iota-message)
+    - [Shimmer Message](#shimmer-message)
+    - [Parts of an Shimmer Message](#parts-of-an-shimmer-message)
   - [How Ledger Hardware Wallets Work](#how-ledger-hardware-wallets-work)
-  - [IOTA Specific Considerations for Ledger Hardware Wallets](#iota-specific-considerations-for-ledger-hardware-wallets)
-    - [IOTA User-Facing App Functions](#iota-user-facing-app-functions)
+  - [Shimmer Specific Considerations for Ledger Hardware Wallets](#shimmer-specific-considerations-for-ledger-hardware-wallets)
+    - [Shimmer User-Facing App Functions](#shimmer-user-facing-app-functions)
       - [Functions](#functions)
       - [Display](#display)
-    - [IOTA Security Concerns Relating to Ledger Hardware Wallets](#iota-security-concerns-relating-to-ledger-hardware-wallets)
+    - [Shimmer Security Concerns Relating to Ledger Hardware Wallets](#shimmer-security-concerns-relating-to-ledger-hardware-wallets)
     - [Limitations of Ledger Hardware Wallets](#limitations-of-ledger-hardware-wallets)
   - [FAQ](#faq)
       - [I lost my ledger, what should I do now?](#i-lost-my-ledger-what-should-i-do-now)
   - [Development](#development)
     - [Preparing development environment](#preparing-development-environment)
-    - [Compile and load the IOTA Ledger app](#compile-and-load-the-iota-ledger-app)
+    - [Compile and load the Shimmer Ledger app](#compile-and-load-the-shimmer-ledger-app)
   - [Specification](#specification)
 
 ---
 
 ## Introduction
 
-IOTA is an unique cryptocurrency with specific design considerations that must be taken into account. This document will attempt to go over how the Ledger hardware wallet functions, and how to stay safe when using a Ledger to store IOTA.
+Shimmer is an unique cryptocurrency with specific design considerations that must be taken into account. This document will attempt to go over how the Ledger hardware wallet functions, and how to stay safe when using a Ledger to store Shimmer.
 
 ### Terminology
 
@@ -50,29 +49,25 @@ IOTA is an unique cryptocurrency with specific design considerations that must b
 
 *Change/Remainder:* After sending funds to a 3rd party, all remaining funds on the account must be transferred to a new address - this is called the change or remainder address.
 
-### Address Reuse
-
-IOTA Chrysalis switched from quantum resistance signatures (Winternitz One-Time) to ED25519 signatures and from an account based model to an UTXO model. For this reason, address reuse no longer is problematic and IOTA is as secure as *other major crypto currencies*.
-
-### IOTA Message
+### Shimmer Message
 
 A message mainly is just a group of inputs and outputs. So if Bob has 10Mi, and wants to send Alice 3Mi, the message could look like this:
 
-**input:** Bob -10Mi
+**input:** Bob -10smr
 
-**output:** Alice +3Mi
+**output:** Alice +3smr
 
-**output:** Bob +7Mi (change output / remainder)
+**output:** Bob +7smr (change output / remainder)
 
-This example highlights how IOTA handles messages. First it takes an input of 10Mi from Bob's address. It sends 3 of it to Alice, and it puts the remaining 7Mi on a new address belonging to Bob's seed.
+This example highlights how Shimmer handles messages. First it takes an input of 10Mi from Bob's address. It sends 3 of it to Alice, and it puts the remaining 7Mi on a new address belonging to Bob's seed.
 
 All inputs require the private key to generate signatures which prove that you are the owner of the funds.
 
 Because messages are *atomic units*, the network will never accept Bob's input of -10Mi without also accepting sending 3 to Alice, and 7 to a new address owned by Bob (in this example).
 
-### Parts of an IOTA Message
+### Parts of an Shimmer Message
 
-An IOTA message is broken up into 2 halves. The first half is generating a message and creating signatures for it.
+An Shimmer message is broken up into 2 halves. The first half is generating a message and creating signatures for it.
 
 The second half is selecting 2 other messages to confirm, and performing the proof of work.
 
@@ -80,7 +75,7 @@ The Ledger is **only** responsible for generating signatures for a specific mess
 
 ## How Ledger Hardware Wallets Work
 
-The Ledger Hardware Wallet works by deterministically generating IOTA keys based on your 24 word mnemonic (created when setting up the device).
+The Ledger Hardware Wallet works by deterministically generating Shimmer keys based on your 24 word mnemonic (created when setting up the device).
 
 Instead of storing the seed on your computer (which could be stolen by an attacker), the seed is stored on the Ledger device, and is never broadcast to the host machine it is connected to.
 
@@ -90,9 +85,9 @@ The host can then use these signatures (which are only valid for that specific m
 
 See [Ledger's documentation](http://ledger.readthedocs.io) to get more info about the inner workings of the Ledger Hardware Wallets.
 
-## IOTA Specific Considerations for Ledger Hardware Wallets
+## Shimmer Specific Considerations for Ledger Hardware Wallets
 
-### IOTA User-Facing App Functions
+### Shimmer User-Facing App Functions
 
 #### Functions
 
@@ -107,7 +102,7 @@ See [Ledger's documentation](http://ledger.readthedocs.io) to get more info abou
 **TODO**
 
 
-### IOTA Security Concerns Relating to Ledger Hardware Wallets
+### Shimmer Security Concerns Relating to Ledger Hardware Wallets
 
 All warnings on the Ledger are there for a reason, **MAKE SURE TO READ THEM** and refer to this document if there is any confusion.
 
@@ -116,7 +111,7 @@ All warnings on the Ledger are there for a reason, **MAKE SURE TO READ THEM** an
 
     Outputs that go to 3rd party addresses are shown on the display with "Send To". The address to which the rest is sent is shown as "Remainder".
 
-    The Remainder also shows the BIP32 path in addition to the amount. This address is calculated on the ledger and ensures that the rest of the IOTAs are sent to an address owned by the Leder Nano.
+    The Remainder also shows the BIP32 path in addition to the amount. This address is calculated on the ledger and ensures that the rest of the SMRs are sent to an address owned by the Leder Nano.
 
     If the input amount perfectly matches the output amount, there will be no remainder. **If there is no remainder, double check that you are sending the proper amount to the proper address because there is no remainder being sent back to your seed.**
 
@@ -131,7 +126,7 @@ Due to the memory limitations of the Ledger Nano S/X, the messages have certain 
 Hopefully you wrote down your 24 recovery words and your optional passphrase in a safe place. If not, all your funds are lost.
 
 If you did, the best solution is to buy a new Ledger and enter your 24 recovery words and your optional passphrase in the new device.<br>
-After installation of the IOTA Ledger app, all your funds are restored. Take care to reinitialize your seed index correctly.
+After installation of the Shimmer Ledger app, all your funds are restored. Take care to reinitialize your seed index correctly.
 
 ## Development
 
@@ -140,7 +135,7 @@ You either can
 - run the app in a Ledger Nano S/X simulator or
 - load the app on your read Ledger Nano S
 
-In both cases, you find instructions here: [Ledger-IOTA-App-Docker Repository](docker)
+In both cases, you find instructions here: [Ledger-Shimmer-App-Docker Repository](docker)
 
 ### Preparing development environment
 
@@ -153,7 +148,7 @@ For active development it might be easier to install the development environment
     ```
 - Set up your development environment according to [Ledger Documentation - Getting Started](https://ledger.readthedocs.io/en/latest/userspace/setup.html).
 
-### Compile and load the IOTA Ledger app
+### Compile and load the Shimmer Ledger app
 
 After the development environment has been installed, the app can be build and installed in the following way:
 
@@ -167,4 +162,4 @@ After the development environment has been installed, the app can be build and i
 
 ## Specification
 
-See: [APDU API Specification](docs/specification_chrysalis.md)
+See: [APDU API Specification](docs/specification_shimmer.md)
