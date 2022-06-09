@@ -11,6 +11,7 @@
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Terminology](#terminology)
+
     - [Shimmer Block](#shimmer-block)
     - [Parts of an Shimmer Block](#parts-of-an-shimmer-block)
   - [How Ledger Hardware Wallets Work](#how-ledger-hardware-wallets-work)
@@ -31,6 +32,7 @@
 
 ## Introduction
 
+
 Shimmer is an unique cryptocurrency with specific design considerations that must be taken into account. This document explains how the Ledger hardware wallet works and how to stay safe when using a Ledger to store Shimmer funds.
 
 ### Terminology
@@ -49,6 +51,7 @@ Shimmer is an unique cryptocurrency with specific design considerations that mus
 
 *Change/Remainder:* After sending funds to a 3rd party, all remaining funds on the account must be transferred to a new address - this is called the change or remainder address.
 
+
 ### Shimmer Block
 
 A block is mainly just a group of inputs and outputs. If Bob has 10SMR and he wants to send 3SMR to Alice then the block could look like this:
@@ -56,6 +59,7 @@ A block is mainly just a group of inputs and outputs. If Bob has 10SMR and he wa
 **input:** Bob -10SMR
 
 **output:** Alice +3SMR
+
 
 **output:** Bob +7SMR (change output / remainder)
 
@@ -68,6 +72,7 @@ Because blocks are *atomic units*, the network will never accept Bob's input of 
 ### Parts of a Shimmer Block
 
 A Shimmer block is split into different parts. The first part is to create a block and signatures for this block.
+
 
 The second part is to attach this block to the tangle. Therefore the block needs between one and eight tip messages which are requested from a node of the Shimmer network.
 
@@ -111,6 +116,7 @@ All warnings on the Ledger are there for a reason. **MAKE SURE TO READ THEM** an
 
     Outputs that go to 3rd party addresses are shown on the display with "Send To". The address to which the rest is sent is shown as "remainder".
 
+
     In addition to the amount the remainder also shows the BIP32 path. This address is calculated on the Ledger and ensures that the rest of the SMR funds are sent to an address owned by the Ledger device.
 
     If the input amount perfectly matches the output amount then there will be no remainder. **If there is no remainder, double check that you are sending the proper amount to the proper address because there is no remainder being sent back to your seed.**
@@ -147,6 +153,7 @@ For active development it might be easier to install the development environment
     git submodule update --init --recursive
     ```
 - Set up your development environment according to [Ledger Documentation - Getting Started](https://developers.ledger.com/docs/nano-app/build/).
+
 
 ### Compile and Load The Shimmer Ledger App
 
