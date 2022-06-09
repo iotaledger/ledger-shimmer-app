@@ -144,7 +144,7 @@ You either can
 
 ### Prepare Repository and Submodules 
 
-- Clone this repo
+- Clone this repository
 - Ensure that all git submodules are initialized
   ```
   git submodule update --init --recursive
