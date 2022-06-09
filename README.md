@@ -16,8 +16,7 @@
   - [How Ledger Hardware Wallets Work](#how-ledger-hardware-wallets-work)
   - [Shimmer Specific Considerations for Ledger Hardware Wallets](#shimmer-specific-considerations-for-ledger-hardware-wallets)
     - [Shimmer User-Facing App Functions](#shimmer-user-facing-app-functions)
-      - [Functions](#functions)
-      - [Display](#display)
+      - [Functions and Display](#functions-and-display)
     - [Shimmer Security Concerns Relating to Ledger Hardware Wallets](#shimmer-security-concerns-relating-to-ledger-hardware-wallets)
     - [Limitations of Ledger Hardware Wallets](#limitations-of-ledger-hardware-wallets)
   - [FAQ](#faq)
@@ -95,17 +94,32 @@ See [Ledger's documentation](https://developers.ledger.com/) to get more info ab
 
 ### Shimmer User-Facing App Functions
 
-#### Functions
+#### Functions and Display
 
 - *Display Address:* The wallet is able to ask the Ledger device to display the address for a specific index of the seed. It **only** accepts the index and subsequently generates the address itself. It thus verifies that the address belongs to the corresponding Ledger.
+
+  ![](./docs/images/address.png)
 
     *Note: Only the remainder address (shown as "Remainder") will be verified as belonging to the Ledger. Outputs shown as "Send To" are not.*
 
 - *Sign Transaction:* The wallet will generate a block for the user to approve before the Ledger signs it. **Ensure all amounts and addresses are correct before signing**. These signatures are then sent back to the host machine.
 
-#### Display
+- *Blindsigning:* There are outputs or features that are only supported in blindsigning mode. In this case the Ledger Nano will display an hash to accept or reject. 
 
-**TODO**
+  ![](./docs/images/blindsigning_1.png)
+
+  Blindsigning has to be enabled first in the settings menu. In case it is not enabled, it will show this screen with the only option to reject the signing:
+
+  ![](./docs/images/blindsigning_ne.png)
+
+- *Internal Transfer:* In case there is only one output address and it matches any of the input addresses, the Ledger Nano will show "Internal Transfer" on the display with the info that no funds will leave the hardware wallet. This will be the case for voting or staking or for sweeping transactions that move the funds from a number of addresses to a single one.
+
+  ![](./docs/images/internal_transfer_1.png) ![](./docs/images/internal_transfer_2.png)
+- *Shimmer Claiming:* There is a special mode that allows to claim SMR coins from IOTA addresses. In Claiming mode the app will warn about signing a transaction for the Shimmer network with IOTA private keys:
+
+  ![](./docs/images/claim_smr_1.png) ![](./docs/images/claim_smr_2.png)
+  
+  `... IOTA private keys instead of SMR private keys. Are you really sure you want to proceed?`
 
 
 ### Shimmer Security Concerns Relating to Ledger Hardware Wallets
