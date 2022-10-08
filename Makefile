@@ -24,7 +24,7 @@ include $(BOLOS_SDK)/Makefile.defines
 APPNAME      = "Shimmer"
 APPVERSION_M = 0
 APPVERSION_N = 8
-APPVERSION_P = 1
+APPVERSION_P = 2
 APPVERSION   = "$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)"
 
 APP_LOAD_PARAMS = --path "44'/1'" --curve ed25519 --appFlags 0x240 $(COMMON_LOAD_PARAMS)
@@ -71,6 +71,9 @@ else
     DEFINES += HAVE_BAGL_FONT_OPEN_SANS_EXTRABOLD_11PX
     DEFINES += HAVE_BAGL_FONT_OPEN_SANS_LIGHT_16PX
 endif
+
+# default disable DEBUG build
+DEBUG = 0
 
 # if speculos simulator is selected enable debuging features
 ifeq ($(SPECULOS), 1)
